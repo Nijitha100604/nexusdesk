@@ -218,3 +218,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Secrets and environment
+.env
+.env.*
+!.env.example
+!frontend/.env.example
+
+# Node
+node_modules/
+frontend/dist/
+
+# Project data (generated, never commit)
+chroma_data/
+*.sqlite3
+data/eval/private/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
