@@ -7,7 +7,7 @@ Update this file whenever the instance configuration changes.
 
 | Item | Value |
 |---|---|
-| Instance URL | https://dev460301.service-now.com |
+| Instance URL | https://devxxxxx.service-now.com |
 | Release | Brazil |
 | Type | Personal Developer Instance (PDI) |
 | Created | 29-10-2026 |
@@ -42,11 +42,11 @@ configuration below instead of querying ServiceNow at runtime.
 
 | Group | sys_id | Used for |
 |---|---|---|
-| Service Desk | d625dccec0a8016700a222a0f7900d06 | Account and password, other or unknown, fallback |
-| Network Support | f328323f8384131018d5fe55eeaad36e | Network and VPN |
-| Software Support | 6758763f8384131018d5fe55eeaad363 | Software and access |
-| Hardware Support | d588ba3f8384131018d5fe55eeaad363 | Hardware |
-| Messaging Support | adb8be3f8384131018d5fe55eeaad327 | Email and collaboration |
+| Service Desk | xxxxx | Account and password, other or unknown, fallback |
+| Network Support | xxxxx | Network and VPN |
+| Software Support | xxxxxx | Software and access |
+| Hardware Support | xxxxxx | Hardware |
+| Messaging Support | xxxxxx | Email and collaboration |
 
 Note: if any default group was reused, write its real name here.
 
@@ -54,9 +54,9 @@ Note: if any default group was reused, write its real name here.
 
 | user_name | Name | Identity type | sys_id |
 |---|---|---|---|
-| demo.employee1 | Priya Raman | Human | 72bf7a3b83c4131018d5fe55eeaad328 |
-| demo.employee2 | Arjun Nair | Human | 6f6047fb83c4131018d5fe55eeaad327 |
-| demo.employee3 | Meera Krishnan | Human | 6ea0c3f783c4131018d5fe55eeaad3c4 |
+| demo.employee1 | Priya Raman | Human | xxxxxx |
+| demo.employee2 | Arjun Nair | Human | xxxxxx |
+| demo.employee3 | Meera Krishnan | Human | xxxxxxx |
 
 These users have no roles. They are used only as `caller_id` on tickets.
 
