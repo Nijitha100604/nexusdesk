@@ -22,6 +22,7 @@ class Settings(BaseSettings):
     sn_instance: str = ""
     sn_user: str = ""
     sn_password: str = ""
+    sn_kb_sys_id: str = ""
 
     # Data stores
     mongodb_uri: str = "mongodb://localhost:27017/nexusdesk"

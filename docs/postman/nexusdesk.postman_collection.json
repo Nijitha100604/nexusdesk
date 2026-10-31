@@ -1,0 +1,308 @@
+{
+  "info": {
+    "_postman_id": "abfc0608-cf15-452b-8754-ea895c404fa1",
+    "name": "NexusDesk ServiceNow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42567945"
+  },
+  "item": [
+    {
+      "name": "Create Incident",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"short_description\": \"Outlook keeps asking for password\",\r\n  \"description\": \"Test ticket created by the integration user.\",\r\n  \"category\": \"software\",\r\n  \"urgency\": \"2\",\r\n  \"impact\": \"3\",\r\n  \"caller_id\": \"72bf7a3b83c4131018d5fe55eeaad328\",\r\n  \"assignment_group\": \"6758763f8384131018d5fe55eeaad363\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{instance}}/api/now/table/incident",
+          "host": [
+            "{{instance}}"
+          ],
+          "path": [
+            "api",
+            "now",
+            "table",
+            "incident"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Incident by number",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{instance}}/api/now/table/incident?sysparm_query=number=INC0010002",
+          "host": [
+            "{{instance}}"
+          ],
+          "path": [
+            "api",
+            "now",
+            "table",
+            "incident"
+          ],
+          "query": [
+            {
+              "key": "sysparm_query",
+              "value": "number=INC0010002"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Active",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{instance}}/api/now/table/incident?sysparm_query=active=true&sysparm_limit=5",
+          "host": [
+            "{{instance}}"
+          ],
+          "path": [
+            "api",
+            "now",
+            "table",
+            "incident"
+          ],
+          "query": [
+            {
+              "key": "sysparm_query",
+              "value": "active=true"
+            },
+            {
+              "key": "sysparm_limit",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add work note",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"work_notes\": \"Agent note: checked VPN client version.\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{instance}}/api/now/table/incident/6123ab148394171018d5fe55eeaad3e9",
+          "host": [
+            "{{instance}}"
+          ],
+          "path": [
+            "api",
+            "now",
+            "table",
+            "incident",
+            "6123ab148394171018d5fe55eeaad3e9"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Resolve",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"state\": \"6\",\r\n  \"close_code\": \"Resolved – Permanent Fix Applied\",\r\n  \"close_notes\": \"Reinstalled VPN client.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{instance}}/api/now/table/incident/6123ab148394171018d5fe55eeaad3e9",
+          "host": [
+            "{{instance}}"
+          ],
+          "path": [
+            "api",
+            "now",
+            "table",
+            "incident",
+            "6123ab148394171018d5fe55eeaad3e9"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Reassign",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"assignment_group\": \"f328323f8384131018d5fe55eeaad36e\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{instance}}/api/now/table/incident/6123ab148394171018d5fe55eeaad3e9",
+          "host": [
+            "{{instance}}"
+          ],
+          "path": [
+            "api",
+            "now",
+            "table",
+            "incident",
+            "6123ab148394171018d5fe55eeaad3e9"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List KB articles",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{instance}}/api/now/table/kb_knowledge?sysparm_query=workflow_state=published^kb_knowledge_base=37109d6c8390571018d5fe55eeaad39d&sysparm_fields=number,short_description,text,workflow_state&sysparm_limit=5",
+          "host": [
+            "{{instance}}"
+          ],
+          "path": [
+            "api",
+            "now",
+            "table",
+            "kb_knowledge"
+          ],
+          "query": [
+            {
+              "key": "sysparm_query",
+              "value": "workflow_state=published^kb_knowledge_base=37109d6c8390571018d5fe55eeaad39d"
+            },
+            {
+              "key": "sysparm_fields",
+              "value": "number,short_description,text,workflow_state"
+            },
+            {
+              "key": "sysparm_limit",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Incidents",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{sn_user}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{sn_password}}",
+        "type": "string"
+      }
+    ]
+  }
+}
