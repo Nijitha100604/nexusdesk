@@ -42,11 +42,11 @@ configuration below instead of querying ServiceNow at runtime.
 
 | Group | sys_id | Used for |
 |---|---|---|
-| Service Desk | xxxxxx | Account and password, other or unknown, fallback |
-| Network Support | xxxxxxx | Network and VPN |
+| Service Desk | xxxxx | Account and password, other or unknown, fallback |
+| Network Support | xxxxx | Network and VPN |
 | Software Support | xxxxxx | Software and access |
 | Hardware Support | xxxxxx | Hardware |
-| Messaging Support | xxxxxxx | Email and collaboration |
+| Messaging Support | xxxxxx | Email and collaboration |
 
 Note: if any default group was reused, write its real name here.
 
@@ -55,7 +55,7 @@ Note: if any default group was reused, write its real name here.
 | user_name | Name | Identity type | sys_id |
 |---|---|---|---|
 | demo.employee1 | Priya Raman | Human | xxxxxx |
-| demo.employee2 | Arjun Nair | Human | xxxxxxx |
+| demo.employee2 | Arjun Nair | Human | xxxxxx |
 | demo.employee3 | Meera Krishnan | Human | xxxxxxx |
 
 These users have no roles. They are used only as `caller_id` on tickets.
