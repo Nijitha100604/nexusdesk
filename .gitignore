@@ -238,3 +238,5 @@ data/eval/private/
 .vscode/
 .idea/
 .DS_Store
+
+backend/config/servicenow.json
