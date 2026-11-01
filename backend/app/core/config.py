@@ -23,6 +23,9 @@ class Settings(BaseSettings):
     sn_user: str = ""
     sn_password: str = ""
     sn_kb_sys_id: str = ""
+    sn_config_path: str = ""
+    sn_timeout: float = 15.0
+    sn_max_retries: int = 3
 
     # Data stores
     mongodb_uri: str = "mongodb://localhost:27017/nexusdesk"
