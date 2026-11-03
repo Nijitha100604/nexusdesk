@@ -203,3 +203,8 @@ Tick each call after testing it as helpdesk_agent_svc in Postman.
 5. Create the NexusDesk knowledge base, the user criteria and the read access.
 6. Re-run the seed scripts (Phase 5) to reload articles and incidents.
 7. Update every sys_id in this file and in the configuration.
+
+## 11. Seed data
+
+1. Articles - 40
+2. Incidents - 120

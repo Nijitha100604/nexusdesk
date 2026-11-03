@@ -240,3 +240,6 @@ data/eval/private/
 .DS_Store
 
 backend/config/servicenow.json
+
+data/synthetic/REVIEW.md
+data/synthetic/seed_manifest.json
