@@ -34,6 +34,29 @@ class Settings(BaseSettings):
     # Security
     jwt_secret: str = "change-me"
 
+    llm_model: str = ""
+
+    # RAG
+    embedding_model: str = "BAAI/bge-small-en-v1.5"
+    embedding_cache_dir: str = ".cache/embeddings"
+    rag_collection: str = "nexusdesk_knowledge"
+    rag_top_k: int = 5
+    rag_min_similarity: float = 0.45
+    rag_rerank: bool = False
+
+    @property
+    def chroma_dir(self) -> Path:
+        return self._resolve(self.chroma_path)
+
+    @property
+    def embedding_cache(self) -> Path:
+        return self._resolve(self.embedding_cache_dir)
+
+    @staticmethod
+    def _resolve(value: str) -> Path:
+        path = Path(value)
+        return path if path.is_absolute() else ROOT / path
+
 
 @lru_cache
 def get_settings() -> Settings:

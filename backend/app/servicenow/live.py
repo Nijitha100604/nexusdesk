@@ -344,3 +344,16 @@ class LiveServiceNowClient(ServiceNowClient):
             },
         )
         return [KnowledgeArticle.from_api(r) for r in records]
+
+    def fetch_resolved_incidents(self, *, limit: int = 50, offset: int = 0) -> list[Incident]:
+        records = self._request(
+            "GET",
+            "incident",
+            params={
+                "sysparm_query": "stateIN6,7^ORDERBYsys_updated_on^ORDERBYsys_id",
+                "sysparm_fields": INCIDENT_FIELDS,
+                "sysparm_limit": max(1, min(limit, 100)),
+                "sysparm_offset": max(0, offset),
+            },
+        )
+        return [Incident.from_api(r) for r in records]

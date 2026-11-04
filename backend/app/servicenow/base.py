@@ -79,3 +79,19 @@ class ServiceNowClient(ABC):
             if len(page) < page_size:
                 return
             offset += page_size
+
+    @abstractmethod
+    def fetch_resolved_incidents(self, *, limit: int = 50, offset: int = 0) -> list[Incident]:
+        """Resolved or closed incidents, oldest update first (used by the RAG sync)."""
+
+    def iter_resolved_incidents(
+        self, *, page_size: int = 50, max_items: int = 1000
+    ) -> Iterator[Incident]:
+        offset = 0
+        while offset < max_items:
+            size = min(page_size, max_items - offset)
+            page = self.fetch_resolved_incidents(limit=size, offset=offset)
+            yield from page
+            if len(page) < size:
+                return
+            offset += size

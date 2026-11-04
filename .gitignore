@@ -243,3 +243,5 @@ backend/config/servicenow.json
 
 data/synthetic/REVIEW.md
 data/synthetic/seed_manifest.json
+.cache/
+logs/

@@ -6,3 +6,5 @@ httpx
 requests
 pydantic
 langchain-core
+chromadb
+fastembed

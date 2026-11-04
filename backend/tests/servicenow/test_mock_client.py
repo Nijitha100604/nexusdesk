@@ -134,3 +134,13 @@ def test_failure_injection(mock_client):
     with pytest.raises(ServiceNowUnavailableError):
         mock_client.ping()
     assert mock_client.ping() is True
+
+
+def test_resolved_incidents_pagination(mock_client):
+    tickets = [make(mock_client, short_description=f"Issue number {i} here") for i in range(5)]
+    for ticket in tickets[:4]:
+        mock_client.resolve_incident(ticket.sys_id, "Resolved by caller", "Fixed it")
+    assert len(mock_client.fetch_resolved_incidents(limit=3)) == 3
+    everything = list(mock_client.iter_resolved_incidents(page_size=2))
+    assert len(everything) == 4 and all(i.state == "6" for i in everything)
+    assert len(list(mock_client.iter_resolved_incidents(page_size=2, max_items=3))) == 3

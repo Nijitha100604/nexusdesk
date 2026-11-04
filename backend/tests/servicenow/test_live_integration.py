@@ -63,3 +63,9 @@ def test_ticket_lifecycle_and_idempotency(live):
     assert live.reassign_incident(first.sys_id, "Service Desk", note="live test").assignment_group
     done = live.resolve_incident(first.sys_id, "Resolved by caller", "Closed by live test")
     assert done.state == "6"
+
+
+def test_resolved_incidents_are_readable(live):
+    incidents = live.fetch_resolved_incidents(limit=5)
+    assert isinstance(incidents, list)
+    assert all(i.state in ("6", "7") for i in incidents)
