@@ -256,3 +256,17 @@ def test_knowledge_refuses_without_base_id(instance_config):
     )
     with pytest.raises(ServiceNowValidationError):
         client.fetch_knowledge_articles()
+
+
+def test_resolved_incidents_query(instance_config):
+    seen = {}
+
+    def handler(request):
+        seen.update(dict(request.url.params))
+        return httpx.Response(200, json={"result": [record(state="6", close_notes="Done")]})
+
+    client, _ = make_client(handler, instance_config)
+    incidents = client.fetch_resolved_incidents(limit=500, offset=20)
+    assert incidents[0].close_notes == "Done"
+    assert "stateIN6,7" in seen["sysparm_query"]
+    assert seen["sysparm_limit"] == "100" and seen["sysparm_offset"] == "20"

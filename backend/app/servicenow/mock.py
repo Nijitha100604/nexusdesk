@@ -250,3 +250,9 @@ class MockServiceNowClient(ServiceNowClient):
             items = [a for a in items if a.sys_updated_on > cutoff]
         items.sort(key=lambda a: a.sys_updated_on)
         return items[offset : offset + limit]
+
+    def fetch_resolved_incidents(self, *, limit: int = 50, offset: int = 0) -> list[Incident]:
+        self._enter("fetch_resolved_incidents")
+        rows = [r for r in self._records.values() if r["state"] in ("6", "7")]
+        rows.sort(key=lambda r: (r["sys_updated_on"], r["sys_id"]))
+        return [Incident(**r) for r in rows[offset : offset + max(1, min(limit, 100))]]
